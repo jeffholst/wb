@@ -4,19 +4,19 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), VitePWA()]
+  plugins: [vue(), 
+    VitePWA({
+      manifest: {
+        name: 'Workout Buddy',
+        themeColor: '#4DBA87',
+        msTileColor: '#000000',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black',
+      },
+      workbox: {
+        skipWaiting: true
+      }
+    })
+  ]
 })
 
-VitePWA({
-  manifest: {
-    "name": "Workout Buddy",
-    "short_name": "WB",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#fff",
-    "description": "A nice workout Buddy.",
-  },
-  workbox: {
-    // workbox options for generateSW
-  }
-})
